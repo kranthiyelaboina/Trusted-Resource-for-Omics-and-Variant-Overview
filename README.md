@@ -207,11 +207,6 @@ This project is licensed under the MIT License.
 ## About
 
 Created for Mahendra University Hackathon.  
-Built by [Your Team Name].
-
-If you have any questions or need support, open an issue at:  
-https://github.com/yourusername/TROVO/issues
+Built by [Kranthi Yelaboina].
 
 ---
-
-Let me know if you’d like this automatically saved in a `README.md` file or if you want a shortened version too.
