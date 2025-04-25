@@ -1,71 +1,68 @@
-```markdown
+---
+
 # TROVO: Trusted Resource for Omics and Variant Overview
 
-![TROVO Banner](https://via.placeholder.com/1200x300/2D9951/FFFFFF?text=TROVO)
+TROVO is an intelligent platform that delivers comprehensive biological insights into human proteins — including structure, function, disease associations, and molecular interactions — through a seamless, conversational interface.
 
-**TROVO** is an intelligent platform that delivers comprehensive biological insights into human proteins — including structure, function, disease associations, and molecular interactions — through seamless, conversational exploration.
+## Table of Contents
 
----
-
-## 📑 Table of Contents
-
-- [Overview](#-overview)
-- [Features](#-features)
-- [Technology Stack](#-technology-stack)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [API Reference](#-api-reference)
-- [Project Structure](#-project-structure)
-- [Contributing](#-contributing)
-- [License](#-license)
-- [About](#-about)
+- Overview  
+- Features  
+- Technology Stack  
+- Installation  
+- Usage  
+- API Reference  
+- Project Structure  
+- Contributing  
+- License  
+- About  
 
 ---
 
-## 🔭 Overview
+## Overview
 
-TROVO integrates data from multiple protein databases and leverages AI to provide researchers, students, and professionals with comprehensive insights about proteins in an intuitive interface. The platform combines traditional search-based exploration with a conversational AI assistant to make protein biology more accessible.
-
----
-
-## ✨ Features
-
-### 🔍 Protein Explorer
-
-- **Smart Search**: Input any protein name or synonym and get refined search results
-- **Comprehensive Information**: View detailed protein information from UniProt
-- **3D Structure Visualization**: Interactive 3D models of protein structures from AlphaFold
-- **AI-Generated Analysis**: Get AI-powered insights about protein function and properties
-- **Drug Associations**: Discover drugs and compounds that interact with the selected protein
-
-### 💬 Protein Chat
-
-- **Conversational AI**: Ask questions about proteins in natural language
-- **Context-Aware Responses**: The AI assistant considers your currently selected protein
-- **Educational Insights**: Get detailed explanations about protein biology concepts
-- **Interactive UI**: Smooth typing animations and intuitive chat interface
-
-### 📋 Session Management
-
-- **Multi-Tab Interface**: Create and manage multiple protein search tabs
-- **Session Persistence**: Seamlessly switch between different protein searches
-- **Custom Naming**: Rename tabs for better organization
+TROVO integrates data from multiple protein databases and uses AI to help users explore proteins easily. It supports both traditional search-based exploration and a conversational assistant for intuitive learning and discovery.
 
 ---
 
-## 🛠️ Technology Stack
+## Features
+
+### Protein Explorer
+
+- Search proteins by name or synonym
+- Get detailed information from UniProt
+- View 3D protein structures using AlphaFold data
+- Receive AI-generated insights about the protein
+- See related drug and compound associations (from ChEMBL)
+
+### Protein Chat
+
+- Ask questions in natural language
+- AI assistant responds using protein context
+- Useful for learning protein biology concepts
+- Interactive, clean chat UI
+
+### Session Management
+
+- Manage multiple protein search tabs
+- Switch between sessions with ease
+- Rename tabs for better organization
+
+---
+
+## Technology Stack
 
 ### Backend
 
 - Python 3.9+
-- Flask
+- Flask (Web Framework)
 - Flask-CORS
-- Google Generative AI (Gemini API)
+- Google Gemini API (Generative AI)
 
 ### Frontend
 
-- HTML5 / CSS3 / JavaScript
-- 3Dmol.js
+- HTML / CSS / JavaScript
+- 3Dmol.js (for 3D structure)
 
 ### Data Sources
 
@@ -79,149 +76,137 @@ TROVO integrates data from multiple protein databases and leverages AI to provid
 
 ---
 
-## 📥 Installation
+## Installation
 
-### Prerequisites
+### Requirements
 
-- Python 3.9 or higher
-- Node.js and npm (optional, for development)
+- Python 3.9+
+- Node.js and npm (optional)
 
-### Setup
+### Steps
 
-1. **Clone the repository**
-   ```bash
+1. Clone the repository:
+   ```
    git clone https://github.com/yourusername/TROVO.git
    cd TROVO
    ```
 
-2. **Create and activate a virtual environment**
-   ```bash
+2. Create and activate a virtual environment:
+   ```
    python -m venv venv
-   # On Windows
+   # Windows
    venv\Scripts\activate
-   # On macOS/Linux
+   # macOS/Linux
    source venv/bin/activate
    ```
 
-3. **Install dependencies**
-   ```bash
+3. Install dependencies:
+   ```
    pip install -r requirements.txt
    ```
 
-4. **Set up environment variables**
+4. Set environment variables:
+   Create a `.env` file:
    ```
-   # Create a .env file with the following variables
    GEMINI_API_KEY=your_gemini_api_key
    SECRET_KEY=your_secret_key
    FLASK_DEBUG=True
    ```
 
-5. **Run the application**
-   ```bash
-   # For Flask web interface
+5. Run the application:
+   ```
+   # For Flask
    python app.py
 
-   # For Streamlit interface
+   # Optional Streamlit version
    streamlit run streamlit_app.py
    ```
 
 ---
 
-## 🚀 Usage
+## Usage
 
-### Web Interface
-
-1. **Search for Proteins**
-   - Navigate to the "Protein Explorer" tab
-   - Enter a protein name (e.g., "Insulin", "TP53", "EGFR")
-   - View detailed protein information
-
-2. **Chat with the AI Assistant**
-   - Navigate to the "Protein Chat" tab
-   - Ask questions about proteins or biology in general
-   - Context is applied if you've selected a protein
-
-3. **Manage Multiple Searches**
-   - Use sidebar to switch between searches
-   - Create new tabs and rename them as needed
+1. Open the web interface.
+2. Use the "Protein Explorer" to search for a protein (e.g., "TP53").
+3. Use "Protein Chat" to ask questions related to the selected protein.
+4. Open multiple tabs to compare or explore different proteins.
+5. Rename tabs for better organization.
 
 ---
 
-## 📚 API Reference
+## API Reference
 
-| Endpoint                                      | Method | Description                               |
-|----------------------------------------------|--------|-------------------------------------------|
-| `/api/protein/{protein_name}`                | GET    | Get basic protein information             |
-| `/api/protein/{protein_name}/analysis`       | GET    | Get AI-generated protein analysis         |
-| `/api/protein/{protein_name}/structure`      | GET    | Get protein 3D structure data             |
-| `/api/protein/{protein_name}/drugs`          | GET    | Get drug associations                     |
-| `/api/refine-query`                          | POST   | Refine a protein query using AI           |
-| `/api/conversation`                          | POST   | Process a chat conversation about protein |
+| Endpoint                                  | Method | Description                                 |
+|------------------------------------------|--------|---------------------------------------------|
+| `/api/protein/{protein_name}`            | GET    | Get basic protein data                      |
+| `/api/protein/{protein_name}/analysis`   | GET    | AI-generated analysis of the protein        |
+| `/api/protein/{protein_name}/structure`  | GET    | Get 3D structure info                       |
+| `/api/protein/{protein_name}/drugs`      | GET    | List drugs associated with the protein      |
+| `/api/refine-query`                      | POST   | Refine a protein search query using AI      |
+| `/api/conversation`                      | POST   | Ask a question to the protein chatbot       |
 
-### Example (Python)
+### Example
+
 ```python
 import requests
 
-# Get protein information
 response = requests.get("https://amino-verse-backend1.vercel.app/api/protein/insulin")
-data = response.json()
-print(data)
+print(response.json())
 ```
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Amino_Verse/
-├── app.py                      # Main Flask app
-├── config.py                   # Configurations
-├── index.html                  # Web UI
-├── requirements.txt            # Dependencies
-├── scripts.js                  # JS frontend logic
-├── streamlit_app.py            # Streamlit app
-├── styles.css                  # CSS styles
-├── vercel.json                 # Vercel deployment settings
-├── models/                     # Data models (if any)
-├── routes/                     # API routes
+├── app.py
+├── config.py
+├── index.html
+├── requirements.txt
+├── scripts.js
+├── streamlit_app.py
+├── styles.css
+├── vercel.json
+├── models/
+├── routes/
 │   ├── __init__.py
 │   └── api.py
-├── services/                   # Data service integrations
-│   ├── __init__.py
+├── services/
 │   ├── alphafold_service.py
 │   ├── chembl_service.py
 │   ├── gemini_service.py
 │   └── uniprot_service.py
-└── utils/                      # Utilities
-    ├── __init__.py
+└── utils/
     └── response_formatter.py
 ```
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-We welcome contributions from the community!
-
-1. Fork the repo
-2. Create your feature branch: `git checkout -b feature-name`
+1. Fork the repository.
+2. Create a branch: `git checkout -b feature-name`
 3. Commit your changes: `git commit -m "Add new feature"`
-4. Push to the branch: `git push origin feature-name`
-5. Open a pull request
+4. Push to your branch: `git push origin feature-name`
+5. Open a pull request.
 
 ---
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more info.
+This project is licensed under the MIT License.
 
 ---
 
-## 🏫 About
+## About
 
-Built with ❤️ for the Mahendra University Hackathon by [Your Team Name].
+Created for Mahendra University Hackathon.  
+Built by [Your Team Name].
 
-For questions or support, please [open an issue](https://github.com/yourusername/TROVO/issues).
-```
+If you have any questions or need support, open an issue at:  
+https://github.com/yourusername/TROVO/issues
 
-Let me know if you'd like me to auto-fill things like your GitHub username, team name, or provide a custom banner image.
+---
+
+Let me know if you’d like this automatically saved in a `README.md` file or if you want a shortened version too.
