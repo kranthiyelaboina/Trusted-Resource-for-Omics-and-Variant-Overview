@@ -1,11 +1,14 @@
 ---
-
 # TROVO: Trusted Resource for Omics and Variant Overview
 
 TROVO is an intelligent platform that delivers comprehensive biological insights into human proteins — including structure, function, disease associations, and molecular interactions — through a seamless, conversational interface.
-Visit the Live Working Site here: https://kranthiyelaboina.github.io/Trusted-Resource-for-Omics-and-Variant-Overview/
-Backend is hosted on Vercel: https://amino-verse-backend1.vercel.app/
 
+**🔗 Live Site:** [Visit the Working Site](https://kranthiyelaboina.github.io/Trusted-Resource-for-Omics-and-Variant-Overview/)  
+**🔧 Backend (API):** [Hosted on Vercel](https://amino-verse-backend1.vercel.app/)
+
+---
+
+You can now paste this version at the top of your existing `README.md`. Let me know if you want me to regenerate the full markdown with this included.
 ## Table of Contents
 
 - Overview  
