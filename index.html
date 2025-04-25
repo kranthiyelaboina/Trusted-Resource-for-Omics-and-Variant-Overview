@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TROVO</title>
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 3Dmol.js for protein visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.1/3Dmol-min.js"></script>
+    
+    <!-- Load our script -->
+    <script src="scripts.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Sura:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Improved sidebar toggle button -->
+    <button id="sidebar-toggle" class="sidebar-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+    </button>
+
+    <!-- Update the sidebar structure -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Protein History</h3>
+            <button id="sidebar-close" class="sidebar-close">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="sidebar-tabs">
+            <button id="add-tab" class="add-tab">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                New Search
+            </button>
+            <div id="sidebar-tab-list" class="sidebar-tab-list">
+                <!-- Tabs will be dynamically generated here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add overlay for sidebar background -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    
+    <!-- The background animation will be inserted by JavaScript -->
+    
+    <div class="os-phrases" id="os-phrases">
+        <h2>T<span>R</span>O<span>V</span>O</h2>
+    </div>
+    <div class='console-container'>
+        <span id='text'></span>
+        <div class='console-underscore' id='console'>&#95;</div>
+    </div>
+    <p class="subheading">Trusted Resource for Omics and Variant Overview</p>
+
+    <p class="intro-text">An intelligent platform that delivers comprehensive biological insights into human proteins — including structure, function, disease associations, and molecular interactions — through seamless, conversational exploration.</p>
+
+    <!-- Tab Navigation -->
+    <div class="tab-container">
+        <div class="tab active" data-tab="explorer-tab">Protein Explorer</div>
+        <div class="tab" data-tab="chat-tab">Protein Chat</div>
+    </div>
+
+    <!-- Explorer Tab Content -->
+    <div id="explorer-tab" class="tab-content active">
+        <div class="input-container">
+            <input id="protein-input" class="protein-input" type="text" placeholder="Enter a protein name (e.g., Insulin, TP53, EGFR)">
+            <button onclick="get_info()">Search</button>
+        </div>
+
+        <!-- Results container - hidden initially -->
+        <div id="results-container" class="results-container" style="display:none">
+            <!-- Search results (refined query) -->
+            <div id="search-results" class="section"></div>
+            
+            <!-- Protein information section -->
+            <div id="protein-info-section" class="section" style="display:none">
+                <h2>Protein Information</h2>
+                <div id="protein-info" class="content-container"></div>
+            </div>
+            
+            <!-- Structure section -->
+            <div id="structure-section" class="section" style="display:none">
+                <h2>Protein 3D Structure</h2>
+                <div id="structure-container" class="content-container"></div>
+            </div>
+            
+            <!-- Analysis section -->
+            <div id="analysis-section" class="section" style="display:none">
+                <h2>Protein Analysis</h2>
+                <div id="analysis-container" class="content-container"></div>
+            </div>
+            
+            <!-- Drug associations section -->
+            <div id="drugs-section" class="section" style="display:none">
+                <h2>Drug Associations</h2>
+                <div id="drugs-container" class="content-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Tab Content -->
+    <div id="chat-tab" class="tab-content">
+        <div class="chat-container">
+            <!-- Chat status message -->
+            <div id="chat-status" class="chat-status">
+                <div id="protein-context">
+                    <p>Start chatting about proteins or search for a specific protein in the Explorer tab.</p>
+                </div>
+            </div>
+            
+            <!-- Chat messages -->
+            <div id="chat-messages" class="chat-messages"></div>
+            
+            <!-- Chat input -->
+            <div class="chat-input-container">
+                <input id="chat-input" type="text" placeholder="Ask a question about proteins...">
+                <button onclick="sendChat()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="background-gradient">
+        <div class="gradient-blob gradient-blob-1"></div>
+        <div class="gradient-blob gradient-blob-2"></div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3>About TROVO</h3>
+            <p>This application integrates multiple protein databases and AI tools to provide a comprehensive view of protein structures and functions:</p>
+            <ul>
+                <li><strong>Data sources</strong>: UniProt, AlphaFold DB, ChEMBL</li>
+                <li><strong>Visualization</strong>: 3Dmol.js</li>
+                <li><strong>AI assistance</strong>: Open-Source Llama (fine-tuned)</li>
+            </ul>
+            <p>Created for Mahendra University Hackathon</p>
+        </div>
+    </footer>
+</body>
+</html>
