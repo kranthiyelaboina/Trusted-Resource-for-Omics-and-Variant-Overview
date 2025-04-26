@@ -8,7 +8,7 @@ TROVO is an intelligent platform that delivers comprehensive biological insights
 
 ---
 
-You can now paste this version at the top of your existing `README.md`. Let me know if you want me to regenerate the full markdown with this included.
+
 ## Table of Contents
 
 - Overview  
