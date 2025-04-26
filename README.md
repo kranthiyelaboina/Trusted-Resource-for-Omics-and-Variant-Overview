@@ -207,6 +207,6 @@ This project is licensed under the MIT License.
 ## About
 
 Created for Mahendra University Hackathon.  
-Built by [Kranthi Yelaboina].
+Built by [Team Shadow Slave].
 
 ---
